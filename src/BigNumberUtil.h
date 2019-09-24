@@ -27,7 +27,7 @@
 #include <stddef.h>
 
 // Define exactly one of these to 1 to set the size of the basic limb type.
-#if defined(__AVR__) || defined(ESP8266)
+#if defined(__AVR__) //|| defined(ESP8266)
 // 16-bit limbs seem to give the best performance on 8-bit AVR micros.
 // They also seem to give better performance on ESP8266 as well.
 #define BIGNUMBER_LIMB_8BIT  0
