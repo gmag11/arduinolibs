@@ -1,8 +1,8 @@
 {
-    "name": "CryptoLW",
+    "name": "Crypto",
     "version": "0.2.0",
-    "keywords": "Acorn128,Ascon128,Speck,SpeckSmall,SpeckTiny",
-    "description": "Light-weight ciphers for the Arduino Cryptography Library",
+    "keywords": "AES128,AES192,AES256,Speck,CTR,CFB,CBC,OFB,EAX,GCM,XTS,ChaCha,ChaChaPoly,EAX,GCM,SHA256,SHA512,SHA3_256,SHA3_512,BLAKE2s,BLAKE2b,SHAKE128,SHAKE256,Poly1305,GHASH,OMAC,Curve25519,Ed25519,P521,RNG,NOISE",
+    "description": "Library to perform cryptography operations on Arduino devices and ESP8266 / ESP32",
     "authors":
     {
         "name": "Rhys Weatherley",
@@ -10,7 +10,7 @@
         "url": "https://rweather.github.io/arduinolibs/crypto.html"
     },
     "export": {
-      "include": "libraries/CryptoLW"
+      "include": "libraries/Crypto"
     },
     "repository":
     {
