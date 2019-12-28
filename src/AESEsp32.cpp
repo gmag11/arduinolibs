@@ -60,12 +60,12 @@ bool AESCommon::setKey(const uint8_t *key, size_t len)
 
 void AESCommon::encryptBlock(uint8_t *output, const uint8_t *input)
 {
-    esp_aes_encrypt(&ctx, input, output);
+    esp_internal_aes_encrypt(&ctx, input, output);
 }
 
 void AESCommon::decryptBlock(uint8_t *output, const uint8_t *input)
 {
-    esp_aes_decrypt(&ctx, input, output);
+    esp_internal_aes_decrypt(&ctx, input, output);
 }
 
 void AESCommon::clear()
