@@ -23,7 +23,7 @@
 #ifndef CRYPTO_SHA1_h
 #define CRYPTO_SHA1_h
 
-#include "Hash.h"
+#include "CryptoHash.h"
 
 class SHA1 : public Hash
 {

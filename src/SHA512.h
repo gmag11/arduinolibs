@@ -23,7 +23,7 @@
 #ifndef CRYPTO_SHA512_h
 #define CRYPTO_SHA512_h
 
-#include "Hash.h"
+#include "CryptoHash.h"
 
 class Ed25519;
 

@@ -20,7 +20,7 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-#include "Hash.h"
+#include "CryptoHash.h"
 #include <string.h>
 
 /**
