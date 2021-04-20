@@ -9,7 +9,7 @@ terms of the MIT license.
 This has been forked from https://github.com/rweather/arduinolibs in order
 to extract Cryptographic library and give it modern Arduino library format.
 
-The [documentation](http://rweather.github.com/arduinolibs/crypto.html)
+The [documentation](http://rweather.github.io/arduinolibs/crypto.html)
 contains more information on the libraries and examples.
 
 This repository used to contain a number of other examples and libraries
