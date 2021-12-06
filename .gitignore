@@ -4,3 +4,4 @@ hardware
 *.o
 *.a
 .depend
+host/Crypto/Makefile
