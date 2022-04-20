@@ -23,6 +23,7 @@
 #include "SHA384.h"
 #include "Crypto.h"
 #include "utility/ProgMemUtil.h"
+#include <string.h>
 
 
 /**
