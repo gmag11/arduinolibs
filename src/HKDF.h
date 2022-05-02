@@ -23,7 +23,7 @@
 #ifndef CRYPTO_HKDF_h
 #define CRYPTO_HKDF_h
 
-#include "Hash.h"
+#include "CryptoHash.h"
 #include "Crypto.h"
 
 class HKDFCommon
