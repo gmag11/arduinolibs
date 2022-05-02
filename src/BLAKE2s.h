@@ -23,7 +23,7 @@
 #ifndef CRYPTO_BLAKE2S_H
 #define CRYPTO_BLAKE2S_H
 
-#include "CryptoHash.h"
+#include "Hash.h"
 
 class BLAKE2s : public Hash
 {
