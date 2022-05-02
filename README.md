@@ -2,6 +2,16 @@
 Arduino Cryptography Library
 ============================
 
+This is a fork with minor changes form original rweather repository.
+ - Rename `Hash.h` to `CryptoHash.h` because a name conflict in Windows with
+   `hash.h` from ESP8266 Arduino core.
+ - Restructure format as Arduino library for easier use in Platformio.
+
+----------
+#### Original README.MD from forked repository
+-------------
+
+
 This distribution contains a libraries and example applications to perform
 cryptography operations on Arduino devices.  They are distributed under the
 terms of the MIT license.
