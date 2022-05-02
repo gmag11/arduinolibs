@@ -70,6 +70,16 @@
  */
 
 /**
+ * \var BLAKE2b::HASH_SIZE
+ * \brief Constant for the size of the hash output of BLAKE2b.
+ */
+
+/**
+ * \var BLAKE2b::BLOCK_SIZE
+ * \brief Constant for the block size of BLAKE2b.
+ */
+
+/**
  * \brief Constructs a BLAKE2b hash object.
  */
 BLAKE2b::BLAKE2b()
@@ -240,7 +250,7 @@ void BLAKE2b::resetHMAC(const void *key, size_t keyLen)
 {
     formatHMACKey(state.m, key, keyLen, 0x36);
     state.lengthLow += 128;
-    processChunk(0);
+    state.chunkSize = 128;
 }
 
 void BLAKE2b::finalizeHMAC(const void *key, size_t keyLen, void *hash, size_t hashLen)
@@ -249,7 +259,7 @@ void BLAKE2b::finalizeHMAC(const void *key, size_t keyLen, void *hash, size_t ha
     finalize(temp, sizeof(temp));
     formatHMACKey(state.m, key, keyLen, 0x5C);
     state.lengthLow += 128;
-    processChunk(0);
+    state.chunkSize = 128;
     update(temp, sizeof(temp));
     finalize(hash, hashLen);
     clean(temp);

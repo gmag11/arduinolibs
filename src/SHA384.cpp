@@ -23,7 +23,7 @@
 #include "SHA384.h"
 #include "Crypto.h"
 #include "utility/ProgMemUtil.h"
-
+#include <string.h>
 
 /**
  * \class SHA384 SHA384.h <SHA384.h>
@@ -32,6 +32,16 @@
  * Reference: http://en.wikipedia.org/wiki/SHA-2
  *
  * \sa SHA256, SHA512, SHA3_256, BLAKE2s
+ */
+
+/**
+ * \var SHA384::HASH_SIZE
+ * \brief Constant for the size of the hash output of SHA384.
+ */
+
+/**
+ * \var SHA384::BLOCK_SIZE
+ * \brief Constant for the block size of SHA384.
  */
 
 /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Southern Storm Software, Pty Ltd.
+ * Copyright (C) 2022 Southern Storm Software, Pty Ltd.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -20,42 +20,57 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef CRYPTO_HASH_h
-#define CRYPTO_HASH_h
+#ifndef CRYPTO_HKDF_h
+#define CRYPTO_HKDF_h
 
-#include <inttypes.h>
-#include <stddef.h>
+#include "Hash.h"
+#include "Crypto.h"
 
-class Hash
+class HKDFCommon
 {
 public:
-    Hash();
-    virtual ~Hash();
+    virtual ~HKDFCommon();
 
-    virtual size_t hashSize() const = 0;
-    virtual size_t blockSize() const = 0;
+    void setKey(const void *key, size_t keyLen, const void *salt = 0, size_t saltLen = 0);
 
-    virtual void reset() = 0;
-    virtual void update(const void *data, size_t len) = 0;
-    virtual void finalize(void *hash, size_t len) = 0;
+    void extract(void *out, size_t outLen, const void *info = 0, size_t infoLen = 0);
 
-    virtual void clear() = 0;
-
-    virtual void resetHMAC(const void *key, size_t keyLen) = 0;
-    virtual void finalizeHMAC(const void *key, size_t keyLen, void *hash, size_t hashLen) = 0;
+    void clear();
 
 protected:
-    void formatHMACKey(void *block, const void *key, size_t len, uint8_t pad);
+    HKDFCommon();
+    void setHashAlgorithm(Hash *hashAlg, uint8_t *buffer)
+    {
+        hash = hashAlg;
+        buf = buffer;
+    }
+
+private:
+    Hash *hash;
+    uint8_t *buf;
+    uint8_t counter;
+    uint8_t posn;
 };
 
-template <typename T> void hmac
-    (void *out, size_t outLen, const void *key, size_t keyLen,
-     const void *data, size_t dataLen)
+template <typename T>
+class HKDF : public HKDFCommon
 {
-    T context;
-    context.resetHMAC(key, keyLen);
-    context.update(data, dataLen);
-    context.finalizeHMAC(key, keyLen, out, outLen);
+public:
+    HKDF() { setHashAlgorithm(&hashAlg, buffer); }
+    ~HKDF() { ::clean(buffer, sizeof(buffer)); }
+
+private:
+    T hashAlg;
+    uint8_t buffer[T::HASH_SIZE * 2];
+};
+
+template <typename T> void hkdf
+    (void *out, size_t outLen, const void *key, size_t keyLen,
+     const void *salt, size_t saltLen, const void *info, size_t infoLen)
+{
+    HKDF<T> context;
+    context.setKey(key, keyLen, salt, saltLen);
+    context.extract(out, outLen, info, infoLen);
 }
 
 #endif

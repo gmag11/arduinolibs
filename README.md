@@ -25,6 +25,17 @@ improvements, please contact the author Rhys Weatherley via
 Recent significant changes to the library
 -----------------------------------------
 
+Mar 2022:
+
+* HMAC-BLAKE2b and HMAC-BLAKE2s were giving incorrect results when the
+message being authenticated was zero-length.
+
+Jan 2022:
+
+* All-in-one hmac() function in Hash.h for simplified HMAC computations.
+* New API for the HKDF hash-based key derivation function.
+* Make the ESP32 version of AES less dependent on include file locations.
+
 Apr 2018:
 
 * Acorn128 and Ascon128 authenticated ciphers (finalists in the CAESAR AEAD
